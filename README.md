@@ -1,6 +1,9 @@
-# littil-frontend
+# LITTIL website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
+This project contains the sourcecode of the LITTIL website.
+
+## Setup your local environment
+For more information about setting up your local development environment, please read [set up your development environment](https://github.com/Devoxx4Kids-NPO/littil-frontend/blob/main/docs/set-up-your-development-environment.md).
 
 ## Development server
 
