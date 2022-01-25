@@ -6,5 +6,5 @@ For this we are building a platform called LITTIL, which enables engineers who l
 ## Getting started
 First, thank you for considering contributing to LITTIL. You can contribute in multiple ways:
 - Report bugs: You can report bugs by creating an issue using [Github](https://github.com/Devoxx4Kids-NPO/littil-frontend/issues)
-- Fix bugs or build a feature: please see our [guide to set up your LITTIL development environment](https://github.com/Devoxx4Kids-NPO/littil-frontend/blob/main/docs/set-up-your-development-environment.md).
+- Fix bugs or build a feature: please see our [guide to set up your LITTIL development environment](docs/set-up-your-development-environment.md).
 - Contribute to workshop material
