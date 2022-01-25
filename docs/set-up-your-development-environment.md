@@ -13,7 +13,7 @@ When installing NodeJS you will get an installation of NPM as well.
 To install NodeJS on Windows or MacOS you can simply download it from [the website](https://nodejs.org/en/).
 
 #### Linux
-The easiest way to install NodeJS is by using your package manager. For instructions on your distribution see [the website asell](https://nodejs.org/en/download/package-manager/)
+The easiest way to install NodeJS is by using your package manager. For instructions on your distribution see [the website as well](https://nodejs.org/en/download/package-manager/)
 
 ### Installation
 To download and install all your dependencies you can run:
