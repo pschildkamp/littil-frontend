@@ -3,7 +3,29 @@
 This project contains the sourcecode of the LITTIL website.
 
 ## Setup your local environment
+
 For more information about setting up your local development environment, please read [set up your development environment](https://github.com/Devoxx4Kids-NPO/littil-frontend/blob/main/docs/set-up-your-development-environment.md).
+
+## Project files organization
+
+The project files are split into two main folders: 'components' and 'pages'.
+
+- Components: re-useable UI-components
+- Pages: page level components
+
+## Styling rules with TailwindCSS
+
+We are using [TailwindCSS](https://tailwindcss.com/) to style our application. Keep these few rules in mind when styling:
+
+1. Tailwind classes first: use tailwind classes for all the styling. If you are missing something in tailwind: try to use arbitrary values [(example)](https://tailwindcss.com/docs/width#arbitrary-values) or check the config file for missing colors etc.
+1. HTMl first: use as much as tailwind classes in the html. Do not add your own classes to add tailwind classes in the `.scss`.
+1. Use `@apply`: if styling in the `.scss` is nesseccary, add ALL classes to the `.scss`. Tailwind classes can be added by using @apply:
+
+```
+body {
+    @apply w-10;
+}
+```
 
 ## Development server
 
