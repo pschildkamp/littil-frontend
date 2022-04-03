@@ -20,6 +20,3 @@ jobs:
         node-version: 16.x
         cache: 'npm'
     - uses: ArtiomTr/jest-coverage-report-action@v2
-    - run: npm ci
-    - run: npm run build
-    - run: npm run test-ci
