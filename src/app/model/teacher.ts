@@ -3,17 +3,23 @@ export class Teacher {
   static UPDATED_EVENT = 'teacher-updated';
   static DELETED_EVENT = 'teacher-deleted';
 
-  id: string
+  id: string;
   firstName: string;
-  surname: string;
+  surName: string;
   email: string;
   postalCode: string;
-  country: string = "nl"
+  country: string = 'nl';
 
-  constructor(id: string, firstName: string, surname: string, email: string, postalCode: string) {
+  constructor(
+    id: string,
+    firstName: string,
+    surName: string,
+    email: string,
+    postalCode: string
+  ) {
     this.id = id;
     this.firstName = firstName;
-    this.surname = surname;
+    this.surName = surName;
     this.email = email;
     this.postalCode = postalCode;
   }
@@ -22,10 +28,10 @@ export class Teacher {
 export class TeacherUpdate {
   id: string;
   firstName: string | undefined;
-  surname: string | undefined;
+  surName: string | undefined;
   email: string | undefined;
   postalCode: string | undefined;
-  country: string = "nl"
+  country: string = 'nl';
 
   constructor(id: string) {
     this.id = id;
@@ -34,9 +40,9 @@ export class TeacherUpdate {
 
 export class TeacherCreate {
   firstName: string | undefined;
-  surname: string | undefined;
+  surName: string | undefined;
   email: string | undefined;
   password: string | undefined;
   postalCode: string | undefined;
-  country: string = "nl"
+  country: string = 'nl';
 }
