@@ -1,7 +1,7 @@
 <button
-  [ngClass]="colorClass"
-  class="m-2 py-2 px-4 text-white"
+  [ngClass]="{ 'w-full': !inline, 'mr-2': inline }"
+  [class]="'mb-2 py-2 px-4 text-white ' + colorClass"
   (click)="onClick.emit($event)"
 >
-  {{ text }}
+  <ng-content></ng-content>
 </button>
