@@ -32,7 +32,7 @@ export class FormInputTextComponent implements ControlValueAccessor {
   }
 
   onChange = (event: any) => {};
-  onTouched = () => {};
+  onTouched = (event: any) => {};
 
   writeValue(value: string) {
     this.value = value;

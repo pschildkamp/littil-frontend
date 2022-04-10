@@ -1,25 +1,37 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { ButtonComponent } from './button.component';
 
 describe('ButtonComponent', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ButtonComponent ]
-    })
-    .compileComponents();
-  });
-
+  let spectator: Spectator<ButtonComponent>;
+  const createComponent = createComponentFactory(ButtonComponent);
   beforeEach(() => {
-    fixture = TestBed.createComponent(ButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create instance', () => {
+    expect(spectator.component).toBeTruthy();
+  });
+
+  describe('onClick', () => {
+    it('should emit click', () => {
+      jest.spyOn(spectator.component.onClick, 'emit');
+      spectator.triggerEventHandler('button', 'click', 'eventValue');
+      expect(spectator.component.onClick.emit).toHaveBeenCalledTimes(1);
+      expect(spectator.component.onClick.emit).toHaveBeenCalledWith(
+        'eventValue'
+      );
+    });
+  });
+  describe('Template', () => {
+    it('should set color class [default]', () => {
+      expect(spectator.query('button')).toHaveClass('bg-blue-200');
+    });
+    it('should set inline class', () => {
+      expect(spectator.query('button')).toHaveClass('w-full');
+      expect(spectator.query('button')).not.toHaveClass('mr-2');
+      spectator.setInput('inline', true);
+      expect(spectator.query('button')).not.toHaveClass('w-full');
+      expect(spectator.query('button')).toHaveClass('mr-2');
+    });
   });
 });

@@ -12,6 +12,7 @@
     [value]="value"
     [disabled]="disabled"
     (change)="value = $any($event.target).value"
+    (touched)="onTouched($event)"
   >
     <ng-content></ng-content>
   </select>

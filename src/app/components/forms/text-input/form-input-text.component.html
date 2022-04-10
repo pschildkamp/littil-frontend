@@ -14,6 +14,7 @@
     [placeholder]="placeholder"
     [disabled]="disabled"
     (change)="value = $any($event.target).value"
+    (touched)="onTouched($event)"
   />
   <p *ngIf="hasError" class="text-red-500 text-xs italic">{{ errorMessage }}</p>
 </div>
