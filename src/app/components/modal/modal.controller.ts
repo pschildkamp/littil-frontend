@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 })
 export class ModalController {
   private _modalIsActive: boolean = false;
-  constructor(public dialog: MatDialog, public router: Router) {}
+  constructor(private dialog: MatDialog, private router: Router) {}
   private _routerSubscription!: Subscription;
   present<OutPutDataType, InputDataType>(
     component: IModalComponentConstructor<OutPutDataType, InputDataType>,
@@ -24,7 +24,6 @@ export class ModalController {
       });
       const dialogConfig = new MatDialogConfig();
       dialogConfig.disableClose = true;
-      dialogConfig.panelClass = ['w-auto', 'h-auto', 'min-w-1/2'];
 
       const matDialogRef = this.dialog.open(component, dialogConfig);
       const componentInstance: IModalComponent<OutPutDataType, InputDataType> =
