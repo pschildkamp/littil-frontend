@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { TeacherCreate, TeacherUpdate } from "./model/teacher";
-import { Observable,EMPTY } from "rxjs";
+import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { Teacher } from "./model/teacher";
+import { Observable, map } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private uri= 'api/v1/teacher'
+  ) { }
 
-  create(teacher: TeacherCreate): Observable<string> {
-    return EMPTY;
+  get(id: string): Observable<Teacher> {
+    return this.http.get<Teacher>(`${this.uri}/${id}`);
   }
 
-  update(teacher: TeacherUpdate): Observable<string> {
-    return EMPTY;
+  create(teacher: Teacher): Observable<number> {
+    return this.http.post(`${this.uri}`,teacher, { observe: 'response' })
+      .pipe(map(data => data.status));
+  }
+
+  update(teacher: Teacher): Observable<number> {
+    return this.http.put(`${this.uri}/${teacher.id}`,teacher, { observe: 'response' })
+      .pipe(map(data => data.status));
   }
 }
