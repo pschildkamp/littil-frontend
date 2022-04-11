@@ -1,0 +1,20 @@
+.cdk-overlay-container {
+  @apply fixed z-[1000] pointer-events-none top-0 left-0 h-full w-full;
+}
+.cdk-overlay-backdrop {
+  @apply bg-black bg-opacity-30 absolute top-0 bottom-0 left-0 right-0 z-[1000] pointer-events-auto transition-opacity opacity-0;
+  &.cdk-overlay-backdrop-showing {
+    @apply opacity-100;
+  }
+}
+.cdk-global-overlay-wrapper {
+  @apply flex absolute z-[1000] pointer-events-none  top-0 left-0 h-full w-full;
+}
+
+.mat-dialog-container {
+  @apply block p-6 rounded box-border overflow-auto outline-0 w-full h-full min-h-[inherit] max-h-[inherit] bg-white shadow-lg text-black text-opacity-80;
+}
+
+.cdk-overlay-pane {
+  @apply flex static max-w-[80vw] pointer-events-auto box-border z-[1000];
+}
