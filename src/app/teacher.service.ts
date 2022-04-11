@@ -7,11 +7,9 @@ import { Observable, map } from "rxjs";
   providedIn: 'root'
 })
 export class TeacherService {
+  private uri = 'api/v1/teacher';
 
-  constructor(
-    private http: HttpClient,
-    private uri= 'api/v1/teacher'
-  ) { }
+  constructor(private http: HttpClient) {}
 
   get(id: string): Observable<Teacher> {
     return this.http.get<Teacher>(`${this.uri}/${id}`);
