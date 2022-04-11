@@ -6,7 +6,12 @@ export class Teacher {
   postalCode: string | undefined;
   country: string = "nl"
 
-  constructor(id: string, firstName: string, surname: string, email: string, postalCode: string) {
+  constructor(
+    id: string | undefined,
+    firstName: string | undefined,
+    surname: string | undefined,
+    email: string | undefined,
+    postalCode: string | undefined) {
     this.id = id;
     this.firstName = firstName;
     this.surname = surname;
