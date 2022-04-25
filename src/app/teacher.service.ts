@@ -16,12 +16,12 @@ export class TeacherService {
   }
 
   create(teacher: Teacher): Observable<number> {
-    return this.http.post(`${this.uri}`,teacher, { observe: 'response' })
+    return this.http.post(this.uri,teacher, { observe: 'response' })
       .pipe(map(data => data.status));
   }
 
   update(teacher: Teacher): Observable<number> {
-    return this.http.put(`${this.uri}/${teacher.id}`,teacher, { observe: 'response' })
+    return this.http.put(this.uri,teacher, { observe: 'response' })
       .pipe(map(data => data.status));
   }
 }

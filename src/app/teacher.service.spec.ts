@@ -35,6 +35,6 @@ describe('TeacherService', () => {
   it('test update existing teacher', () => {
     let teacher = new Teacher("abcd-1234","Gast","Docent","gast@docent.nl","1000AA");
     spectator.service.update(teacher).subscribe();
-    spectator.expectOne('api/v1/teacher/abcd-1234', HttpMethod.PUT);
+    spectator.expectOne('api/v1/teacher', HttpMethod.PUT);
   });
 });
