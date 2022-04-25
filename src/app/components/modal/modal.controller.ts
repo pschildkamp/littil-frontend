@@ -23,17 +23,21 @@ export class ModalController {
         return true;
       });
       const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = true;
+      dialogConfig.closeOnNavigation = true;
+      dialogConfig.minWidth = '300px';
+      dialogConfig.minHeight = '50vh';
 
       const matDialogRef = this.dialog.open(component, dialogConfig);
       const componentInstance: IModalComponent<OutPutDataType, InputDataType> =
         matDialogRef.componentInstance;
+      componentInstance.loading = true;
       this._modalIsActive = true;
       componentInstance.close = (d: OutPutDataType) => {
         matDialogRef.close(d);
       };
 
       matDialogRef.afterOpened().subscribe(() => {
+        componentInstance.loading = false;
         if (typeof componentInstance.onOpen === 'function' && data) {
           componentInstance.onOpen(data);
         }
@@ -60,4 +64,5 @@ export interface IModalComponentConstructor<OutPutDataType, InputDataType> {
 export interface IModalComponent<OutPutDataType, InputDataType> {
   onOpen?: (data: InputDataType) => any;
   close: (data: OutPutDataType) => any;
+  loading: boolean;
 }

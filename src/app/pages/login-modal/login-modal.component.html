@@ -1,0 +1,24 @@
+<ng-container *ngIf="!loading">
+  <ng-container *ngIf="type === LoginType.Login">
+    <h1>Inloggen</h1>
+    <form [formGroup]="form" (submit)="onClickLogin()">
+      <littil-form-input-text
+        formControlName="email"
+        id="email"
+        label="E-mailadres"
+      ></littil-form-input-text>
+      <littil-form-input-password
+        formControlName="password"
+        id="password"
+        label="Wachtwoord"
+      ></littil-form-input-password>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="type === LoginType.Register">
+    <h1>Registeren</h1>
+  </ng-container>
+  <button class="btn" (click)="onClickLogin()">
+    {{ type === LoginType.Login ? "Inloggen" : "Registreren" }}
+  </button>
+  <button class="btn" (click)="onClickCancel()">Annuleren</button>
+</ng-container>
