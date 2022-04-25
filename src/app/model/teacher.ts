@@ -5,6 +5,9 @@ export class Teacher {
   email: string | undefined;
   postalCode: string | undefined;
   country: string = "nl"
+  // TODO: let's not go here yet
+  //preferences: "this is a free text field",
+  //availability: [0,2,4]
 
   constructor(
     id: string | undefined,
