@@ -18,10 +18,12 @@ export class TeacherService {
   create(teacher: Teacher): Observable<number> {
     return this.http.post(this.uri,teacher, { observe: 'response' })
       .pipe(map(data => data.status));
+    // TODO: the documented response json {'message': 'Teacher created'}
   }
 
   update(teacher: Teacher): Observable<number> {
     return this.http.put(this.uri,teacher, { observe: 'response' })
       .pipe(map(data => data.status));
+    // TODO: the documented response json {'message': 'Teacher updated'}
   }
 }
