@@ -1,7 +1,17 @@
-<p>homepage works!</p>
-<littil-button (click)="openLoginModal(LoginType.Register)"
-  >Registeren</littil-button
->
-<littil-button (click)="openLoginModal(LoginType.Login)"
-  >Inloggen</littil-button
->
+<div class="p-4 bg-blue-50 flex justify-between items-center">
+  <div>Logo</div>
+  <div>
+    <littil-button
+      [inline]="true"
+      data-test="register-btn"
+      (click)="openLoginModal(LoginType.Register)"
+      >Registeren</littil-button
+    >
+    <littil-button
+      [inline]="true"
+      data-test="login-btn"
+      (click)="openLoginModal(LoginType.Login)"
+      >Inloggen</littil-button
+    >
+  </div>
+</div>

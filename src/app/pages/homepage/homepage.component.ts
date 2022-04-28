@@ -15,8 +15,6 @@ export class HomepageComponent {
   constructor(private modalController: ModalController) {}
 
   public openLoginModal(type: LoginType) {
-    return this.modalController
-      .present(LoginModalComponent, { type: type })
-      .then(() => {});
+    return this.modalController.present(LoginModalComponent, { type: type });
   }
 }
