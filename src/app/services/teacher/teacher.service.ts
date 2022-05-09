@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
-import { Teacher } from "./model/teacher";
-import { Observable, map } from "rxjs";
+import { map, Observable } from 'rxjs';
+import { Teacher } from '../../model/teacher';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TeacherService {
   private uri = 'api/v1/teacher';
@@ -16,14 +16,16 @@ export class TeacherService {
   }
 
   create(teacher: Teacher): Observable<number> {
-    return this.http.post(this.uri,teacher, { observe: 'response' })
-      .pipe(map(data => data.status));
+    return this.http
+      .post(this.uri, teacher, { observe: 'response' })
+      .pipe(map((data) => data.status));
     // TODO: the documented response json {'message': 'Teacher created'}
   }
 
   update(teacher: Teacher): Observable<number> {
-    return this.http.put(this.uri,teacher, { observe: 'response' })
-      .pipe(map(data => data.status));
+    return this.http
+      .put(this.uri, teacher, { observe: 'response' })
+      .pipe(map((data) => data.status));
     // TODO: the documented response json {'message': 'Teacher updated'}
   }
 }
