@@ -1,11 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {map, Observable} from "rxjs";
-import {Teacher} from "../../model/teacher";
-import {HttpClient} from "@angular/common/http";
-import {School} from "../../model/school";
+import { map, Observable } from 'rxjs';
+import { School } from '../../model/school';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SchoolService {
   private uri = 'api/v1/school';
@@ -16,8 +15,8 @@ export class SchoolService {
     return this.http.get<School>(`${this.uri}/${id}`);
   }
 
-  create(teacher: Teacher): Observable<number> {
-    return this.http.post(this.uri,teacher, { observe: 'response' })
+  create(school: School): Observable<number> {
+    return this.http.post(this.uri,school, { observe: 'response' })
       .pipe(map(data => data.status));
     // TODO: the documented response json {'message': 'School created'}
   }
