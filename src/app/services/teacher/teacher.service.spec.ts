@@ -1,8 +1,12 @@
-import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import {
+  createHttpFactory,
+  HttpMethod,
+  SpectatorHttp,
+} from '@ngneat/spectator';
+import { Teacher } from '../../model/teacher';
 import { TeacherService } from './teacher.service';
-import {createHttpFactory, HttpMethod, SpectatorHttp} from "@ngneat/spectator";
-import {Teacher} from "./model/teacher";
 
 describe('TeacherService', () => {
   let service: TeacherService;
@@ -14,7 +18,7 @@ describe('TeacherService', () => {
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(TeacherService);
-    spectator = createHttp()
+    spectator = createHttp();
   });
 
   it('should be created', () => {
@@ -27,13 +31,25 @@ describe('TeacherService', () => {
   });
 
   it('test create new teacher', () => {
-    let teacher = new Teacher(undefined,"Gast","Docent","gast@docent.nl","1000AA");
+    let teacher = new Teacher(
+      undefined,
+      'Gast',
+      'Docent',
+      'gast@docent.nl',
+      '1000AA'
+    );
     spectator.service.create(teacher).subscribe();
     spectator.expectOne('api/v1/teacher', HttpMethod.POST);
   });
 
   it('test update existing teacher', () => {
-    let teacher = new Teacher("abcd-1234","Gast","Docent","gast@docent.nl","1000AA");
+    let teacher = new Teacher(
+      'abcd-1234',
+      'Gast',
+      'Docent',
+      'gast@docent.nl',
+      '1000AA'
+    );
     spectator.service.update(teacher).subscribe();
     spectator.expectOne('api/v1/teacher', HttpMethod.PUT);
   });
