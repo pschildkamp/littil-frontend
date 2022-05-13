@@ -8,6 +8,7 @@ export class FormBaseComponent {
   @Input() id!: string;
   @Input() label: string = '';
   @Input() disabled: boolean = false;
+  @Input() hasError: boolean = false;
   @Output() onValueChanged: EventEmitter<string> = new EventEmitter<string>();
 
   private _value: string = '';
