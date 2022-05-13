@@ -1,4 +1,5 @@
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {
   ILoginModalInput,
   LoginModalComponent,
@@ -9,6 +10,7 @@ import { FormInputTextComponent } from '../../components/forms/text-input/form-i
 import { FormInputPasswordComponent } from '../../components/forms/password-input/form-input-password.component';
 import { FormInputRadioComponent } from '../../components/forms/radio-input/form-input-radio.component';
 import { ButtonComponent } from '../../components/button/button.component';
+import {TestBed} from "@angular/core/testing";
 
 describe('LoginModalComponent', () => {
   let spectator: Spectator<LoginModalComponent>;
@@ -28,6 +30,9 @@ describe('LoginModalComponent', () => {
   });
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
     spectator = createComponent();
     spectator.detectChanges();
     spectator.component.close = () => undefined;
