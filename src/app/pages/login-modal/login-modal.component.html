@@ -34,12 +34,93 @@
       (submit)="onClickOK()"
     >
       <littil-form-input-text
-        formControlName="name"
-        id="name"
-        label="Naam"
-        errorMessage="Naam is verplicht"
-        [hasError]="FormUtil.InValid(registerTeacherForm.controls['name'])"
+        formControlName="firstName"
+        id="firstName"
+        label="Voornaam"
+      >
+        <littil-form-error-message
+          *ngIf="FormUtil.InValid(registerTeacherForm.controls['firstName'])"
+          errorText="Voornaam is verplicht"
+        ></littil-form-error-message>
+      </littil-form-input-text>
+      <littil-form-input-text
+        formControlName="surname"
+        id="surname"
+        label="Achternaam"
+      >
+        <littil-form-error-message
+          *ngIf="FormUtil.InValid(registerTeacherForm.controls['surname'])"
+          errorText="Achternaam is verplicht"
+        ></littil-form-error-message
       ></littil-form-input-text>
+      <littil-form-input-text
+        formControlName="email"
+        id="email"
+        label="E-mailadres"
+      >
+        <littil-form-error-message
+          *ngIf="
+            FormUtil.InValid(registerTeacherForm.controls['email']) &&
+            FormUtil.ContainsError(
+              registerTeacherForm.controls['email'],
+              'required'
+            )
+          "
+          errorText="E-mailadres is verplicht"
+        ></littil-form-error-message>
+        <littil-form-error-message
+          *ngIf="
+            FormUtil.InValid(registerTeacherForm.controls['email']) &&
+            FormUtil.ContainsError(
+              registerTeacherForm.controls['email'],
+              'email'
+            )
+          "
+          errorText="Ongeldig e-mailadres"
+        ></littil-form-error-message>
+      </littil-form-input-text>
+      <!-- TODO: Question: why do we ask for a postalCode? -->
+      <littil-form-input-text
+        formControlName="postalCode"
+        id="postalCode"
+        label="Postcode"
+        errorMessage="Postcode is verplicht"
+        [hasError]="
+          FormUtil.InValid(registerTeacherForm.controls['postalCode'])
+        "
+      >
+        <littil-form-error-message
+          *ngIf="
+            FormUtil.InValid(registerTeacherForm.controls['postalCode']) &&
+            FormUtil.ContainsError(
+              registerTeacherForm.controls['postalCode'],
+              'required'
+            )
+          "
+          errorText="Postcode is verplicht"
+        ></littil-form-error-message>
+        <littil-form-error-message
+          *ngIf="
+            FormUtil.InValid(registerTeacherForm.controls['postalCode']) &&
+            FormUtil.ContainsError(
+              registerTeacherForm.controls['postalCode'],
+              'pattern'
+            )
+          "
+          errorText="Ongeldige postcode"
+        ></littil-form-error-message>
+      </littil-form-input-text>
+      <!-- TODO: Question: why do we ask for a country? Why not a city? Is this platform international? -->
+      <littil-form-input-text
+        formControlName="country"
+        id="country"
+        label="Land"
+      >
+        <littil-form-error-message
+          *ngIf="FormUtil.InValid(registerTeacherForm.controls['country'])"
+          errorText="Land is verplicht"
+        ></littil-form-error-message>
+      </littil-form-input-text>
     </form>
     <form
       *ngIf="registerType === 'school'"
