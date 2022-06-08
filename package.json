@@ -48,6 +48,7 @@
     "setupFilesAfterEnv": [
       "<rootDir>/setup-jest.ts"
     ],
+    "coveragePathIgnorePatterns": ["<rootDir>/src/app/api/generated"],
     "reporters": [
       "default"
     ],
