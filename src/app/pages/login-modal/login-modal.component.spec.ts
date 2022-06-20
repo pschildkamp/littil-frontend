@@ -11,6 +11,7 @@ import { FormInputPasswordComponent } from '../../components/forms/password-inpu
 import { FormInputRadioComponent } from '../../components/forms/radio-input/form-input-radio.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import {TestBed} from "@angular/core/testing";
+import {FormControl, Validators} from "@angular/forms";
 
 describe('LoginModalComponent', () => {
   let spectator: Spectator<LoginModalComponent>;
@@ -121,18 +122,18 @@ describe('LoginModalComponent', () => {
 
   describe('registerTeacher', () => {
     it('should not close modal when form is invalid', async () => {
-      spectator.component.onOpen({ type: LoginType.Login });
+      spectator.component.onOpen({ type: LoginType.Register });
       await spectator.component.registerTeacher();
       expect(spectator.component.registerTeacherForm.invalid).toBe(true);
       expect(closeSpy).not.toHaveBeenCalled();
     });
 
-    it('should close modal when form is valid', async () => {
-      spectator.component.onOpen({ type: LoginType.Login });
-      spectator.component.registerTeacherForm.get('name')?.setValue('Name');
+    it('should not close modal when form has Invalid postalCode', async () => {
+      spectator.component.onOpen({ type: LoginType.Register });
+      spectator.component.registerTeacherForm.get('postalCode')?.setValue('12-INVALID');
       await spectator.component.registerTeacher();
-      expect(spectator.component.registerTeacherForm.invalid).toBe(false);
-      expect(closeSpy).toHaveBeenCalledTimes(1);
+      expect(spectator.component.registerTeacherForm.invalid).toBe(true);
+      expect(closeSpy).not.toHaveBeenCalled();
     });
   });
 
