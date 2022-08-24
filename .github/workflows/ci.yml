@@ -31,13 +31,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.organization=littil
-            -Dsonar.projectKey=littil-frontend \
-            -Dsonar.sources=src/app \
-            -Dsonar.tests=src/app \
-            -Dsonar.test.inclusions=**/*.spec.ts \
-            -Dsonar.branch.target=${{ steps.branch-name.outputs.base_ref_branch}} \
+            -Dsonar.projectKey=littil-frontend
+            -Dsonar.sources=src/app
+            -Dsonar.tests=src/app
+            -Dsonar.test.inclusions=**/*.spec.ts
+            -Dsonar.branch.target=${{ steps.branch-name.outputs.base_ref_branch}}
             -Dsonar.branch.name=${{ steps.branch-name.outputs.head_ref_branch }}
 
   security-scan:
