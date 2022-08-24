@@ -25,19 +25,20 @@ jobs:
         id: branch-name
         uses: tj-actions/branch-names@v5.5
       - name: Analyze build code
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          npx sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-              -Dsonar.host.url=https://sonarcloud.io \
-              -Dsonar.organization=littil
-              -Dsonar.projectKey=littil-frontend \
-              -Dsonar.sources=src/app \
-              -Dsonar.tests=src/app \
-              -Dsonar.test.inclusions=**/*.spec.ts \
-              -Dsonar.branch.target=${{ steps.branch-name.outputs.base_ref_branch}} \
-              -Dsonar.branch.name=${{ steps.branch-name.outputs.head_ref_branch }}
+        with:
+          args: >
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.organization=littil
+            -Dsonar.projectKey=littil-frontend \
+            -Dsonar.sources=src/app \
+            -Dsonar.tests=src/app \
+            -Dsonar.test.inclusions=**/*.spec.ts \
+            -Dsonar.branch.target=${{ steps.branch-name.outputs.base_ref_branch}} \
+            -Dsonar.branch.name=${{ steps.branch-name.outputs.head_ref_branch }}
 
   security-scan:
     if: github.event.pull_request.draft == false
