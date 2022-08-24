@@ -31,8 +31,8 @@ jobs:
         run: |
           npx sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
               -Dsonar.host.url=https://sonarcloud.io \
-              -Dsonar.projectKey=littil \
-              -Dsonar.projectName=frontend \
+              -Dsonar.organization=littil
+              -Dsonar.projectKey=littil-frontend \
               -Dsonar.sources=src/app \
               -Dsonar.tests=src/app \
               -Dsonar.test.inclusions=**/*.spec.ts \
