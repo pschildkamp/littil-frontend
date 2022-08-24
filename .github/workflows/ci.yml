@@ -21,6 +21,9 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          skip-step: install
       - name: Get branch name
         id: branch-name
         uses: tj-actions/branch-names@v5.5
