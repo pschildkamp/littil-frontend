@@ -34,7 +34,7 @@
     "@openapitools/openapi-generator-cli": "^2.5.1",
     "@tailwindcss/forms": "^0.5.0",
     "@types/jest": "^27.4.1",
-    "@types/node": "^12.11.1",
+    "@types/node": "^18.11.18",
     "autoprefixer": "^10.4.4",
     "jest": "^27.5.1",
     "jest-preset-angular": "^11.1.1",
